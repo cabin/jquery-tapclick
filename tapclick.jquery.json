@@ -7,10 +7,10 @@
         "email": "zak@madebycabin.com",
         "url": "http://madebycabin.com/"
     },
-    "licenses": [
+    "licenses": [{
         "type": "MIT",
         "url": "https://github.com/cabin/jquery-tapclick/blob/master/LICENSE.md"
-    ],
+    }],
     "dependencies": {
         "jquery": ">=1.9.0"
     },
