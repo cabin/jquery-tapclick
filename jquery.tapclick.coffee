@@ -29,15 +29,15 @@
       .on("touchend.#{EVENT_NAME}", onClick)
       .on("touchmove.#{EVENT_NAME}", onTouchMove)
     touch = event.originalEvent.touches[0]
-    @startX = touch.clientX
-    @startY = touch.clientY
+    @startX = touch.screenX
+    @startY = touch.screenY
 
   # When a `touchmove` event is invoked, reset if the user has dragged past the
   # threshold of 10px.
   onTouchMove = (event) ->
     touch = event.originalEvent.touches[0]
-    movedX = Math.abs(touch.clientX - @startX)
-    movedY = Math.abs(touch.clientY - @startY)
+    movedX = Math.abs(touch.screenX - @startX)
+    movedY = Math.abs(touch.screenY - @startY)
     reset(this) if movedX > 10 or movedY > 10
 
   # Invoke the actual click handler and prevent ghost clicks if this was a
@@ -82,8 +82,8 @@
     # from being activated.
     onClick: (event) ->
       for [x, y] in clickbuster.coordinates
-        movedX = Math.abs(event.clientX - x)
-        movedY = Math.abs(event.clientY - y)
+        movedX = Math.abs(event.screenX - x)
+        movedY = Math.abs(event.screenY - y)
         if movedX < 25 and movedY < 25
           event.stopPropagation()
           event.preventDefault()

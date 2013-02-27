@@ -8,14 +8,14 @@
     var touch;
     $(this).on("touchend." + EVENT_NAME, onClick).on("touchmove." + EVENT_NAME, onTouchMove);
     touch = event.originalEvent.touches[0];
-    this.startX = touch.clientX;
-    return this.startY = touch.clientY;
+    this.startX = touch.screenX;
+    return this.startY = touch.screenY;
   };
   onTouchMove = function(event) {
     var movedX, movedY, touch;
     touch = event.originalEvent.touches[0];
-    movedX = Math.abs(touch.clientX - this.startX);
-    movedY = Math.abs(touch.clientY - this.startY);
+    movedX = Math.abs(touch.screenX - this.startX);
+    movedY = Math.abs(touch.screenY - this.startY);
     if (movedX > 10 || movedY > 10) {
       return reset(this);
     }
@@ -50,8 +50,8 @@
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         _ref1 = _ref[_i], x = _ref1[0], y = _ref1[1];
-        movedX = Math.abs(event.clientX - x);
-        movedY = Math.abs(event.clientY - y);
+        movedX = Math.abs(event.screenX - x);
+        movedY = Math.abs(event.screenY - y);
         if (movedX < 25 && movedY < 25) {
           event.stopPropagation();
           _results.push(event.preventDefault());
